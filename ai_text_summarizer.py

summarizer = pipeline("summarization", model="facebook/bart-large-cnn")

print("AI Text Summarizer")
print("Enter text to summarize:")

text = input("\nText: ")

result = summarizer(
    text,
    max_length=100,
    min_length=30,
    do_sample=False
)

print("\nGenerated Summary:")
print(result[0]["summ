@@ -1,0 +1,18 @@
+from transformers import pipeline
+
+summarizer = pipeline("summarization", model="facebook/bart-large-cnn")
+
+print("AI Text Summarizer")
+print("Enter text to summarize:")
+
+text = input("\nText: ")
+
+result = summarizer(
+    text,
+    max_length=100,
+    min_length=30,
+    do_sample=False
+)
+
+print("\nGenerated Summary:")
+print(result[0]["summary_text"])
